@@ -15,12 +15,10 @@ public class CatanBoard {
   public static int MAX_INTERSECTION_PROB = 12;
 
   public void generateBoard() {
-
     List<Resource> resources = initResourcePool();
     Map<Coordinate, Resource> board = new HashMap<>();
     Random rand = new SecureRandom();
 
-    int count = 0;
     do {
       board.clear();
 
@@ -30,14 +28,8 @@ public class CatanBoard {
       for (int i = 0; i < resources.size(); i++) {
         board.put(COORDS.get(i), resources.get(i));
       }
-      if (count++ % 1000 == 0) {
-        System.out.println("Just did 1k resource shuffles");
-      }
     } while (!isValidResources(board));
 
-    System.out.println("Resources have been placed");
-
-    count = 0;
     do {
       Collections.shuffle(PROBS, rand);
       assert (board.size() - 1 == PROBS.size());
@@ -49,9 +41,6 @@ public class CatanBoard {
         }
         r.prob = PROBS.get(i++);
         r.combos = COMBOS.get(r.prob);
-      }
-      if (count++ % 100000 == 0) {
-        System.out.println("Just did 100k probability shuffles");
       }
     } while (!isValidProbs(board, resources));
 
@@ -144,12 +133,37 @@ public class CatanBoard {
     return new Coordinate(radius, (radians < 0) ? radians += 24 : radians);
   }
 
+  /*
+   *                   D0
+   *              O3        B5
+   *          W8       L6       S4
+   *              O3        B5
+   *          W8       L6       S4
+   *              O3        B5
+   *          W8       L6       S4
+   *              O3        B5
+   *                   D0
+   */
   private void printBoard(Map<Coordinate, Resource> board) {
-    board.forEach(
-        (c, r) -> {
-          System.out.println("(" + c.radius + ", " + c.radians + ", " + r.prob + ") "
-              + r.getName());
-        });
+    System.out.println("\t\t\t" + board.get(buildCoordinate(2, 6)).getName());
+    System.out.println("\t\t" + board.get(buildCoordinate(2, 8)).getName() + "\t\t"
+        + board.get(buildCoordinate(2, 4)).getName());
+    System.out.println("\t" + board.get(buildCoordinate(2, 10)).getName() + "\t\t"
+        + board.get(buildCoordinate(1, 6)).getName() + "\t\t"
+        + board.get(buildCoordinate(2, 2)).getName());
+    System.out.println("\t\t" + board.get(buildCoordinate(1, 10)).getName() + "\t\t"
+        + board.get(buildCoordinate(1, 2)).getName());
+    System.out.println("\t" + board.get(buildCoordinate(2, 12)).getName() + "\t\t"
+        + board.get(buildCoordinate(0, 0)).getName() + "\t\t"
+        + board.get(buildCoordinate(2, 0)).getName());
+    System.out.println("\t\t" + board.get(buildCoordinate(1, 14)).getName() + "\t\t"
+        + board.get(buildCoordinate(1, 22)).getName());
+    System.out.println("\t" + board.get(buildCoordinate(2, 14)).getName() + "\t\t"
+        + board.get(buildCoordinate(1, 18)).getName() + "\t\t"
+        + board.get(buildCoordinate(2, 22)).getName());
+    System.out.println("\t\t" + board.get(buildCoordinate(2, 16)).getName() + "\t\t"
+        + board.get(buildCoordinate(2, 20)).getName());
+    System.out.println("\t\t\t" + board.get(buildCoordinate(2, 18)).getName());
   }
 
   private boolean isSameResource(Resource r1, Resource r2) {
