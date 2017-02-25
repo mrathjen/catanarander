@@ -1,15 +1,15 @@
-package com.google.interviews.catan;
+package com.mrathjen.catanarander;
 
 /**
- * 
+ *
  */
 public class SheepResource extends Resource {
 
-    public SheepResource() {
-    }
+  public SheepResource() {
+  }
 
   @Override
-      public String getName() {
-      return "Sheep";
+  public String getName() {
+    return "Sheep";
   }
 }

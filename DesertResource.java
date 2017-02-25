@@ -1,15 +1,15 @@
-package com.google.interviews.catan;
+package com.mrathjen.catanarander;
 
 /**
- * 
+ *
  */
 public class DesertResource extends Resource {
 
-    public DesertResource() {
-    }
+  public DesertResource() {
+  }
 
   @Override
-      public String getName() {
-      return "Desert";
+  public String getName() {
+    return "Desert";
   }
 }

@@ -1,15 +1,15 @@
-package com.google.interviews.catan;
+package com.mrathjen.catanarander;
 
 /**
- * 
+ *
  */
 public class WheatResource extends Resource {
 
-    public WheatResource() {
-    }
+  public WheatResource() {
+  }
 
   @Override
-      public String getName() {
-      return "Wheat";
+  public String getName() {
+    return "Wheat";
   }
 }

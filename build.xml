@@ -1,0 +1,36 @@
+<project name="Catanarander" default="main" basedir=".">
+
+    <description>Catanarander Project</description>
+
+    <property name="projectName" value="Catanarander" />
+    <property name="src.dir" value="." />
+    <property name="build.dir" value="bin" />
+    <property name="dist.dir" value="dist" />
+
+    <target name="compile">
+        <mkdir dir="${build.dir}" />
+        <javac includeantruntime="false" srcdir="${src.dir}" destdir="${build.dir}" />
+    </target>
+
+    <target name="dist" depends="compile" description="package, output to jar">
+        <javac includeantruntime="false" srcdir="${src.dir}" destdir="${build.dir}" />
+        <mkdir dir="${dist.dir}" />
+        <jar jarfile="${dist.dir}/${projectName}.jar" basedir="${build.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="com.mrathjen.catanarander.Catanarander" />
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="run">
+        <java jar="${dist.dir}/${projectName}.jar" fork="true"/>
+    </target>
+
+    <target name="clean" description="clean up">
+        <delete dir="${build.dir}" />
+        <delete dir="${dist.dir}" />
+    </target>
+
+    <target name="main" depends="clean, compile, dist" />
+
+</project>

@@ -1,15 +1,15 @@
-package com.google.interviews.catan;
+package com.mrathjen.catanarander;
 
 /**
- * 
+ *
  */
 public class LumberResource extends Resource {
 
-    public LumberResource() {
-    }
+  public LumberResource() {
+  }
 
   @Override
-      public String getName() {
-      return "Lumber";
+  public String getName() {
+    return "Lumber";
   }
 }

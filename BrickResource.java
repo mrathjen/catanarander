@@ -1,15 +1,15 @@
-package com.google.interviews.catan;
+package com.mrathjen.catanarander;
 
 /**
- * 
+ *
  */
 public class BrickResource extends Resource {
 
-    public BrickResource() {
-    }
+  public BrickResource() {
+  }
 
   @Override
-      public String getName() {
-      return "Brick";
+  public String getName() {
+    return "Brick";
   }
 }

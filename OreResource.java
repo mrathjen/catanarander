@@ -1,15 +1,15 @@
-package com.google.interviews.catan;
+package com.mrathjen.catanarander;
 
 /**
- * 
+ *
  */
 public class OreResource extends Resource {
 
-    public OreResource() {
-    }
+  public OreResource() {
+  }
 
   @Override
-      public String getName() {
-      return "Ore";
+  public String getName() {
+    return "Ore";
   }
 }
